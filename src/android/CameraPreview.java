@@ -1197,19 +1197,13 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
   }
 
   private String[] getVideoPermissions() {
-    ArrayList<String> permissions = new ArrayList<>();
+    ArrayList<String> permissions = new ArrayList<String>();
 
     permissions.add(Manifest.permission.CAMERA);
     permissions.add(Manifest.permission.RECORD_AUDIO);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
-      permissions.add(Manifest.permission.READ_MEDIA_VIDEO);
-    } else {
-      // Android API 32 or lower
-      permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
-      permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-    }
+    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+    permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     return permissions.toArray(new String[0]);
   }
